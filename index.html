@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kamohelo Khahleli — AI Software Developer portfolio. Python, Django,and practical software projects.">
+    <title>Kamohelo Khahleli | AI Software Developer</title>
+
+    <style>
+        :root {
+            --bg: #0b1020;
+            --surface: #121a2d;
+            --surface-2: #18233b;
+            --text: #f5f7fb;
+            --muted: #aeb8cc;
+            --accent: #62a8ff;
+            --accent-2: #8b7cff;
+            --border: rgba(255, 255, 255, 0.10);
+            --max-width: 1120px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(92%, var(--max-width));
+            margin: 0 auto;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(11, 16, 32, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .logo {
+            font-size: 1.15rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .hero {
+            min-height: 82vh;
+            display: grid;
+            place-items: center;
+            padding: 90px 0 70px;
+            background:
+                radial-gradient(circle at 80% 20%, rgba(98, 168, 255, 0.18), transparent 30%),
+                radial-gradient(circle at 20% 70%, rgba(139, 124, 255, 0.13), transparent 28%);
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-size: clamp(2.7rem, 7vw, 5.8rem);
+            line-height: 0.98;
+            letter-spacing: -3px;
+            margin-bottom: 24px;
+        }
+
+        h1 span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            max-width: 700px;
+            color: var(--muted);
+            font-size: 1.15rem;
+            margin-bottom: 32px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 13px 20px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            font-weight: 700;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .button.primary {
+            background: var(--accent);
+            color: #07101f;
+            border-color: var(--accent);
+        }
+
+        .button.secondary {
+            background: transparent;
+            color: var(--text);
+        }
+
+        section {
+            padding: 90px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-heading {
+            margin-bottom: 40px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 10px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            max-width: 700px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+        }
+
+        .about-text p {
+            color: var(--muted);
+            margin-bottom: 18px;
+        }
+
+        .quick-facts {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 28px;
+        }
+
+        .quick-facts h3 {
+            margin-bottom: 18px;
+        }
+
+        .fact {
+            padding: 13px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .fact:last-child {
+            border-bottom: 0;
+        }
+
+        .fact strong {
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .fact span {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill {
+            padding: 11px 15px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            color: #dbe6f8;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .project {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 28px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .project:hover {
+            transform: translateY(-4px);
+            border-color: rgba(98, 168, 255, 0.45);
+        }
+
+        .project-number {
+            color: var(--accent);
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .project h3 {
+            font-size: 1.35rem;
+            margin-bottom: 10px;
+        }
+
+        .project p {
+            color: var(--muted);
+            margin-bottom: 18px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            font-size: 0.82rem;
+            color: #cbd7ea;
+            background: var(--surface-2);
+            padding: 6px 9px;
+            border-radius: 7px;
+        }
+
+        .journey {
+            display: grid;
+            gap: 18px;
+            max-width: 850px;
+        }
+
+        .journey-item {
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            gap: 25px;
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .journey-item .date {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .journey-item h3 {
+            margin-bottom: 6px;
+        }
+
+        .journey-item p {
+            color: var(--muted);
+        }
+
+        .contact-box {
+            background: linear-gradient(135deg, var(--surface), var(--surface-2));
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 45px;
+            text-align: center;
+        }
+
+        .contact-box p {
+            color: var(--muted);
+            max-width: 650px;
+            margin: 0 auto 25px;
+        }
+
+        footer {
+            padding: 30px 0;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 760px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 75px 0;
+            }
+
+            h1 {
+                letter-spacing: -2px;
+            }
+
+            .about-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .journey-item {
+                grid-template-columns: 1fr;
+                gap: 6px;
+            }
+
+            .contact-box {
+                padding: 30px 20px;
+            }
+        }
+    
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid currentColor;
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="container">
+            <a class="logo" href="#home">Kamohelo<span>.</span></a>
+
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#journey">Journey</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container hero-content">
+                <div class="eyebrow">AI Software Developer Student</div>
+
+                <h1>
+                    Hi, I'm <span>Kamohelo.</span><br>
+                    I build with Python.
+                </h1>
+
+                <p>
+                    I am a South African aspiring AI Software Developer focused on building practical
+                    software, learning how AI works, and turning ideas into working projects.
+                    My current development journey is centered around Python, Django,and
+                    the foundations of AI and machine learning.
+                </p>
+
+                <div class="buttons">
+                    <a class="button primary" href="#projects">View My Projects</a>
+                </div>
+            
+        </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>About Me</h2>
+                    <p>A short introduction for employers and people discovering my work online.</p>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>
+                            I am an AI Software Developer student who enjoys understanding how software
+                            works and then applying that knowledge by building projects.
+                        </p>
+
+                        <p>
+                            My main programming language is Python. I am developing my skills through
+                            hands-on projects involving application development, web development,
+                            data and the foundations of artificial intelligence and machine learning.
+                        </p>
+
+                        <p>
+                            I believe that becoming a strong developer is a continuous process.
+                            I am focused on learning, improving my problem-solving ability, writing
+                            better code, and building projects that demonstrate what I can do.
+                        </p>
+                    </div>
+
+                    <div class="quick-facts">
+                        <h3>Quick Facts</h3>
+
+                        <div class="fact">
+                            <strong>Focus</strong>
+                            <span>AI Software Development</span>
+                        </div>
+
+                        <div class="fact">
+                            <strong>Main Language</strong>
+                            <span>Python</span>
+                        </div>
+
+                        <div class="fact">
+                            <strong>Web Development</strong>
+                            <span>Django, HTML, CSS &</span>
+                        </div>
+
+                        <div class="fact">
+                            <strong>Version Control</strong>
+                            <span>Git &</span>
+                        </div>
+
+                        <div class="fact">
+                            <strong>Based in</strong>
+                            <span>South Africa</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>Skills & Technologies</h2>
+                    <p>
+                        Technologies and concepts I am currently learning and using in my development journey.
+                    </p>
+                </div>
+
+                <div class="skills">
+                    <span class="skill">Python</span>
+                    <span class="skill">Django</span>
+                    <span class="skill">HTML</span>
+                    <span class="skill">CSS</span>
+                    <span class="skill">Git</span>
+                    <span class="skill">NumPy</span>
+                    <span class="skill">Machine Learning Fundamentals</span>
+            <span class="skill-pill">Deep Learning</span>
+            <span class="skill">Artificial Intelligence</span>
+                    <span class="skill">Problem Solving</span>
+                    <span class="skill">Python Application Development</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>Projects</h2>
+                    <p>
+                        Practical projects that represent my progress from Python fundamentals
+                        toward full software and AI development.
+                    </p>
+                </div>
+
+                <div class="projects-grid">
+                    <article class="project">
+                        <div class="project-number">01</div>
+                        <h3>Local Plug</h3>
+                        <p>
+                            A Django marketplace concept designed to connect customers with
+                            local South African clothing businesses and brands.
+                        </p>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Django</span>
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">Web Development</span>
+                        </div>
+                    </article>
+
+                    <article class="project">
+                        <div class="project-number">02</div>
+                        <h3>Digital Gradebook System</h3>
+                        <p>
+                            A Python school project that works with student information,
+                            scores, averages, grades and student IDs.
+                        </p>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Functions</span>
+                            <span class="tag">Lists</span>
+                            <span class="tag">Data Handling</span>
+                        </div>
+                    </article>
+
+                    <article class="project">
+                        <div class="project-number">03</div>
+                        <h3>Kivy To-Do App</h3>
+                        <p>
+                            A Python graphical to-do application built while learning how
+                            user interfaces and application logic work together.
+                        </p>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Kivy</span>
+                            <spa/div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="journey">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>My Development Journey</h2>
+                    <p>
+                        I am building my skills step by step rather than trying to learn everything at once.
+                    </p>
+                </div>
+
+                <div class="journey">
+                    <div class="journey-item">
+                        <div class="date">Python</div>
+                        <div>
+                            <h3>Building programming fundamentals</h3>
+                            <p>
+                                Learning functions, variables, conditions, loops, lists, dictionaries,
+                                files, JSON and problem solving through practical projects.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="journey-item">
+                        <div class="date">Web</div>
+                        <div>
+                            <h3>Turning Python into applications</h3>
+                            <p>
+                                Working with Django and frontend technologies to understand how
+                                complete web applications are structured.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="journey-item">
+                        <div>
+                            <h3>Building a public developer portfolio</h3>
+                            <p>
+                                Using Git andto organise projects, track development and
+                                create a visible record of my learning journey.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="journey-item">
+                        <div class="date">AI / ML</div>
+                        <div>
+                            <h3>Moving toward artificial intelligence</h3>
+                            <p>
+                                Studying data, vectors, algorithms, machine learning fundamentals,
+                                accuracy and the responsible use of AI systems.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <div class="contact-box">
+                    <div class="eyebrow">Let's Connect</div>
+                    <h2>Interested in my work?</h2>
+                    <p>
+                        Mycontains my projects and ongoing development journey.
+                        I am open to opportunities where I can learn, contribute and grow as a software developer.
+                    </p>
+
+                    <div class="buttons" style="justify-content: center;">
+                        <a class="button primary"
+                           href="https://.com/Kamohelo-web"
+                           target="_blank"
+                           rel="noopener">
+                            Visit My</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Kamohelo Khahleli. Built with HTML, CSS and.</p>
+        </div>
+    </footer>
+</body>
+</html>
